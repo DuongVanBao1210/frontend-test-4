@@ -1,4 +1,5 @@
 import slider from './slider.png'
+import sliderMobile from './slider-mobile.png'
 import slider1 from './silder1.jpg'
 import slider2 from './slider2.png'
 import rectangle2 from './rectangle-2.png'
@@ -12,7 +13,7 @@ import dropCalendar2 from './drop-calendar2.png'
 import dropCalendar3 from './drop-calendar3.jpg'
 
 export const IMAGES = {
-  slider, drop1, drop2, drop, installApp, slider1, slider2, dropCalendar2, dropCalendar3
+  slider,sliderMobile, drop1, drop2, drop, installApp, slider1, slider2, dropCalendar2, dropCalendar3
 }
 
 export const IMAGES_NFT = [

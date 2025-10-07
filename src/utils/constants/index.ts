@@ -16,7 +16,6 @@ export const DROPS_CANLENDAR = [
 export const SLIDES = [
   {
     src: IMAGES.slider,
-    srcMobile: IMAGES.sliderMobile,
     alt: "State of NFT Drops 1",
   },
   {

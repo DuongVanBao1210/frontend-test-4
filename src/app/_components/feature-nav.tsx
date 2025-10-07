@@ -16,7 +16,7 @@ export default function FeatureNavigation() {
 							transition={{ delay: index * 0.1 }}
 							className="group flex cursor-pointer flex-col items-center space-y-3 lg:justify-between"
 						>
-							<div>
+							<div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2a2b2c] text-white transition-colors group-hover:bg-[#3a3b3c] lg:h-12 lg:w-12">
 								<feature.icon />
 							</div>
 							<span className="text-center text-[10px] font-medium text-white uppercase lg:text-sm">

@@ -4,13 +4,32 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IMAGES_NFT } from "@/assets/images";
 import { motion } from "framer-motion";
 import SectionTitle from "@/components/ui/section-title";
+import { on } from "events";
 
 export default function NFTCollections() {
 	const [api, setApi] = useState<CarouselApi>();
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  useEffect(() => {
+    if (!api) return;
+    const onSelect = () => {
+      setCanScrollPrev(api.canScrollPrev());
+      setCanScrollNext(api.canScrollNext());
+    };
+    onSelect();
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
+  }, [api]);
+
+  
 
 	return (
 		<section className="py-[40px] lg:py-[80px]">
@@ -20,15 +39,18 @@ export default function NFTCollections() {
 					<div className="flex gap-2">
 						<Button
 							variant="secondary"
-							className="h-8 w-8 cursor-pointer rounded-[12px] border-[#3a3b3c] bg-[#2a2b2c] p-0 text-white hover:bg-[#3a3b3c] hover:text-white"
-							onClick={() => api?.scrollPrev()}
+              onClick={() => api?.scrollPrev()}
+              disabled={!canScrollPrev}
+              className={`h-8 w-8 rounded-[12px] border-[#3a3b3c] p-0 text-white transition-colors ${canScrollPrev ? "cursor-pointer bg-[#2a2b2c] hover:bg-[#3a3b3c]" : "cursor-not-allowed bg-[#1a1a1a] opacity-50"} `}
 						>
 							<ChevronLeft className="h-4 w-4" />
 						</Button>
 						<Button
 							variant="secondary"
-							className="h-8 w-8 cursor-pointer rounded-[12px] border-[#3a3b3c] bg-[#2a2b2c] p-0 text-white hover:bg-[#3a3b3c] hover:text-white"
-							onClick={() => api?.scrollNext()}
+              onClick={() => api?.scrollNext()}
+              disabled={!canScrollNext}
+							className={`h-8 w-8 rounded-[12px] border-[#3a3b3c] p-0 text-white transition-colors ${canScrollNext ? "cursor-pointer bg-[#2a2b2c] hover:bg-[#3a3b3c]" : "cursor-not-allowed bg-[#1a1a1a] opacity-50"}`}
+							
 						>
 							<ChevronRight className="h-4 w-4" />
 						</Button>

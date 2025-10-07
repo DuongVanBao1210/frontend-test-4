@@ -36,7 +36,8 @@ export default function HeroSlideshow() {
 					{SLIDES.map((slide, i) => (
 						<CarouselItem key={i} className="basis-full">
 							<div className="relative h-[360px] overflow-hidden md:h-[460px] lg:h-[520px]">
-								<Image src={slide.src} alt={slide.alt} fill priority={i === 0} />
+								<Image src={slide.src} alt={slide.alt} fill priority={i === 0} className="object-cover object-center"
+                sizes="100vw" />
 							</div>
 						</CarouselItem>
 					))}

@@ -37,7 +37,7 @@ export default function Header({ onMenuToggle, isOpen }: HeaderProps) {
 							</button>
 						)}
 
-						<div className="">
+						<div className="logo">
 							<Image src="/logo.png" alt="Logo" width={71} height={39} />
 						</div>
 

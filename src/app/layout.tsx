@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 import MainLayout from "@/layout/main-layout";
 
 export const metadata: Metadata = {
-	title: "Z-TECH NFT Platform",
+	title: "Z-TECH",
 	description: "Premium NFT marketplace and platform",
 };
 
